@@ -1,0 +1,20 @@
+overwrite: true
+schema:
+  - https://myapp.hasura.app/v1/graphql:
+      headers:
+        'x-hasura-admin-secret': 0BcZdfroG4Oi9WNMOpi0CRaUwZBsbql1SirmlQXZKSFwfBkVRYNzuzHnFmrWRO0X
+documents: ['./src/**/*.tsx', './src/**/*.ts']
+generates:
+  generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      skipTypename: false
+      withHooks: true
+      withHOC: false
+      withComponent: false
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
